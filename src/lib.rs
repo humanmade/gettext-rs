@@ -122,7 +122,8 @@ impl Catalog {
         ParseOptions::new().parse(reader)
     }
 
-    fn insert(&mut self, msg: Message) {
+    /// Insert a message into the catalog.
+    pub fn insert(&mut self, msg: Message) {
         let key = match msg.context {
             Some(ref ctxt) => key_with_context(ctxt, &msg.id),
             None => msg.id.clone(),
